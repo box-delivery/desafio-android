@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="String" />
         <variable
             name="viewModel"
             type="com.jlmcdeveloper.githubjavapop.ui.pullrequest.PullRequestViewModel" />
@@ -12,45 +13,75 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBackgroundGrey"
         tools:context=".ui.pullrequest.PullRequestActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar_pullRequest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_pullRequest"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar_pullRequest"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:theme="@style/ToolBarStyle"
-            app:titleTextColor="@android:color/white"
-            app:title="@{viewModel.textTitle}" />
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_pullRequest"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:theme="@style/ToolBarStyle"
+                app:titleTextColor="@android:color/white"
+                app:title="@{viewModel.textTitle}" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBar_pullRequest"
+            android:paddingVertical="14dp">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_pullRequest"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar_pullRequest"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.pRequestOpen +` opened `}"
+                android:textColor="@color/colorTextDartYellow"
+                android:textStyle="bold"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp" />
+            <TextView
+                android:id="@+id/text_forkClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{`/ `+ viewModel.pRequestClose + ` closed`}"
+                android:textColor="@color/colorTextBlack"
+                android:textStyle="bold" />
 
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/pb_loading"
-        style="?android:attr/progressBarStyleLarge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar_pullRequest" />
+        </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_pullRequest"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutPR"
+            tools:listitem="@layout/item_pull_request" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/pb_loading"
+                style="?android:attr/progressBarStyleLarge"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBar_pullRequest" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

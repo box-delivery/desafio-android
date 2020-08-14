@@ -45,8 +45,10 @@
                     android:id="@+id/textDescriptionRepository"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:maxLines="3"
                     android:minLines="2"
+                    android:textColor="@color/colorTextBlack"
                     android:text="descripition epository"
                     android:padding="4dp"/>
 
@@ -69,7 +71,7 @@
                         android:paddingEnd="16dp"
                         android:paddingRight="16dp"
                         android:text="640"
-                        android:textColor="@color/colorNumber"
+                        android:textColor="@color/colorTextDartYellow"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -85,7 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="98"
-                        android:textColor="@color/colorNumber"
+                        android:textColor="@color/colorTextDartYellow"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -117,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="username"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -125,6 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor="@color/colorTextGrey"
                     android:text="nome somebrenome"
                     android:textSize="14sp" />
 

@@ -4,5 +4,9 @@
     <color name="colorPrimaryDark">#00867d</color>
     <color name="colorAccent">#82e9de</color>
 
-    <color name="colorNumber">#FFB300</color>
+    <color name="colorTextDartYellow">#FFB300</color>
+    <color name="colorTextGrey">#7A7A7A</color>
+    <color name="colorTextBlack">#3A3A3A</color>
+
+    <color name="colorBackgroundGrey">#F6F6F6</color>
 </resources>
