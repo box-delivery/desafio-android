@@ -1,4 +1,7 @@
 package com.jlmcdeveloper.githubjavapop.data
 
-class Repository {
+import com.jlmcdeveloper.githubjavapop.data.api.GithubDataSource
+
+class Repository(private val githubDataSource: GithubDataSource) {
+
 }
