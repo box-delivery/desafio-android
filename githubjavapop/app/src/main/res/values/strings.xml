@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Github JavaPop</string>
+    <string name="actor_photo">actor photo</string>
 </resources>
