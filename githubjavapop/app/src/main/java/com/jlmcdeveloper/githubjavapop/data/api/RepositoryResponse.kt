@@ -1,16 +1,25 @@
 package com.jlmcdeveloper.githubjavapop.data.api
 
-data class RepositoryResponse(
-    val id: Long,
-    val name: String,
-    val full_name: String,
-    val description: String,
-    val forks_count: Int,
-    val stargazers_count: Int,
-    val owner: Owner){
+import com.google.gson.annotations.SerializedName
 
-    data class Owner(val id: Long,
-                     val login: String,
-                     val avatar_url: String,
-                     val html_url: String)
+data class RepositoryListResponse(
+    @SerializedName("items") val repository: List<RepositoryResponse>) {
+
+
+    data class RepositoryResponse(
+        val id: Long,
+        val name: String,
+        @SerializedName("full_name") val fullName: String,
+        val description: String,
+        @SerializedName("forks_count") val forksCount: Int,
+        @SerializedName("stargazers_count") val stargazersCount: Int,
+        val owner: Owner
+    )
+
+    data class Owner(
+        val id: Long,
+        val login: String,
+        @SerializedName("avatar_url") val avatarUrl: String,
+        @SerializedName("html_url") val htmlUrl: String
+    )
 }

@@ -11,11 +11,9 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-val apiModule = module {
-    val cacheSize: Long = 10 * 1024 * 1024
 
-    single { Cache(androidContext().cacheDir, cacheSize) }
-    single { OkHttpClient.Builder().cache(get()).build() }
+// ------------------------ api --------------------------
+val retrofitModule = module {
     single {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -23,14 +21,30 @@ val apiModule = module {
             .client(get() as OkHttpClient)
             .build()
     }
-    single { (get() as Retrofit).create(ApiRestGithub::class.java) }
-    single { AppGithubDataSource(get()) }
-
+}
+val cacheModule = module {
+    val cacheSize: Long = 10 * 1024 * 1024
+    single { Cache(androidContext().cacheDir, cacheSize) }
 }
 
+val okHttpClientModule = module {
+    single { OkHttpClient.Builder().cache(get()).build() }
+}
+
+val apiModule = module {
+    single { (get() as Retrofit).create(ApiRestGithub::class.java) }
+    single { AppGithubDataSource(get()) }
+}
+
+val api = listOf(cacheModule, okHttpClientModule, retrofitModule, apiModule)
+
+
+
+// ------------------------ repository --------------------------
 val repositoryModule = module {
     single{ Repository(get() as AppGithubDataSource) }
 }
 
 
-val appModules = repositoryModule + apiModule
+
+val appModules = repositoryModule + api

@@ -1,6 +1,7 @@
 package com.jlmcdeveloper.githubjavapop.data.model
 
-import com.jlmcdeveloper.githubjavapop.data.api.RepositoryResponse
+import com.jlmcdeveloper.githubjavapop.data.api.RepositoryListResponse.RepositoryResponse
+
 
 data class GitCollection(
     val title: String,
@@ -12,8 +13,8 @@ data class GitCollection(
     constructor(repository : RepositoryResponse) : this(
         title = repository.name,
         description = repository.description,
-        fork = repository.forks_count,
-        star = repository.stargazers_count,
-        user = User(repository.owner, repository.full_name)
+        fork = repository.forksCount,
+        star = repository.stargazersCount,
+        user = User(repository.owner, repository.fullName)
     )
 }

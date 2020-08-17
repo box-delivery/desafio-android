@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
-    buildToolsVersion "30.0.1"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.jlmcdeveloper.githubjavapop"
@@ -34,9 +34,12 @@ android {
     buildFeatures {
         dataBinding = true
     }
+
+
 }
 
 dependencies {
+    def lifecycle_version = "2.2.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -53,7 +56,7 @@ dependencies {
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    def lifecycle_version = "2.2.0"
+
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -66,7 +69,7 @@ dependencies {
 
     // livedata emt corrotinas
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.4'
 
     // material designer
     implementation 'com.google.android.material:material:1.2.0'
@@ -85,10 +88,12 @@ dependencies {
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.8.1'
 
+
     // test android
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation "org.koin:koin-test:$koin_version"
     androidTestImplementation "org.mockito:mockito-android:2.15.0"
-
+    // await
+    androidTestImplementation 'org.awaitility:awaitility:3.1.6'
 }

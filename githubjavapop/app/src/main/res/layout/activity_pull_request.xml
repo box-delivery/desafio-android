@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="String" />
         <variable
             name="viewModel"
             type="com.jlmcdeveloper.githubjavapop.ui.pullrequest.PullRequestViewModel" />
