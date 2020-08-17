@@ -99,7 +99,7 @@ class AppGithubDataSourceTest : KoinTest {
         githubDataSource.listPullRequest(1,
             userName = AppDispatcher.pull.user,
             repositoryName = AppDispatcher.pull.repository,
-            success= {
+            success = {
             assertEquals(it.size, AppDispatcher.size)
             val pullRequest = it[0]
             assertEquals(pullRequest.title, AppDispatcher.pull.request.title)
@@ -110,7 +110,7 @@ class AppGithubDataSourceTest : KoinTest {
             assertEquals(pullRequest.user.userInfo, AppDispatcher.pull.request.user.userInfo)
 
             wait = true
-        }, failure= {
+        }, failure = {
             fail("não poderia falhar aqui, tipo do erro: $it")
             wait = true
         })
@@ -122,7 +122,7 @@ class AppGithubDataSourceTest : KoinTest {
         githubDataSource.listPullRequest(2,
             userName = AppDispatcher.pull.user,
             repositoryName = AppDispatcher.pull.repository,
-            success= {
+            success = {
                 fail()
                 wait = true
             }, failure = {

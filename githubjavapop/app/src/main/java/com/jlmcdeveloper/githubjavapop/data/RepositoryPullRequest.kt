@@ -10,7 +10,7 @@ class RepositoryPullRequest(private val githubDataSource: GithubDataSource, priv
 
     val pullRequests = mutableListOf<PullRequest>()
 
-    fun moreCollection(success : (List<PullRequest>) -> Unit, failure: (String) -> Unit) {
+    fun moreCollection(success : (MutableList<PullRequest>) -> Unit, failure: (String) -> Unit) {
         githubDataSource.listPullRequest(getPage(), collection.user.name, collection.title, success = {
             pullRequests.addAll(it)
             success(pullRequests)

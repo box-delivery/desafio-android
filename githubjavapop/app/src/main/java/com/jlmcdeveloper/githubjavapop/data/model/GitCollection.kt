@@ -8,11 +8,12 @@ data class GitCollection(
     var description: String,
     var fork: Int,
     var star: Int,
-    var user: User){
+    var user: User
+) {
 
-    constructor() : this("","",0,0, User())
+    constructor() : this("", "", 0, 0, User())
 
-    constructor(repository : RepositoryResponse) : this(
+    constructor(repository: RepositoryResponse) : this(
         title = repository.name,
         description = repository.description,
         fork = repository.forksCount,
