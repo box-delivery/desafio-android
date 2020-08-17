@@ -1,6 +1,6 @@
 package com.jlmcdeveloper.githubjavapop.data.model
 
-import com.jlmcdeveloper.githubjavapop.data.api.PullRequestResponse
+import com.jlmcdeveloper.githubjavapop.data.api.model.PullRequestResponse
 
 data class PullRequest(val title: String,
                        val body: String,

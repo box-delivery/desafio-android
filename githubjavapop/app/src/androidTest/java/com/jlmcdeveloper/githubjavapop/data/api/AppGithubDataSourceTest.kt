@@ -107,7 +107,7 @@ class AppGithubDataSourceTest : KoinTest {
             assertEquals(pullRequest.url, AppDispatcher.pull.request.url)
             assertEquals(pullRequest.user.name, AppDispatcher.pull.request.user.name)
             assertEquals(pullRequest.user.photo, AppDispatcher.pull.request.user.photo)
-            assertEquals(pullRequest.user.updatedDate, AppDispatcher.pull.request.user.updatedDate)
+            assertEquals(pullRequest.user.userInfo, AppDispatcher.pull.request.user.userInfo)
 
             wait = true
         }, failure= {

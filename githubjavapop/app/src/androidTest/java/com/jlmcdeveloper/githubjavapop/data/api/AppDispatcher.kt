@@ -1,5 +1,6 @@
 package com.jlmcdeveloper.githubjavapop.data.api
 
+import com.jlmcdeveloper.githubjavapop.data.api.model.RepositoryListResponse
 import com.jlmcdeveloper.githubjavapop.data.model.PullRequest
 import com.jlmcdeveloper.githubjavapop.data.model.User
 import okhttp3.mockwebserver.Dispatcher
@@ -28,7 +29,6 @@ class AppDispatcher : Dispatcher() {
                       "private": false,
                       "owner": {
                         "login": "${owner.login}",
-                        "id": ${owner.id},
                         "node_id": "MDQ6VXNlcjU4MjM0Ng==",
                         "avatar_url": "${owner.avatarUrl}",
                         "gravatar_id": "",
@@ -161,7 +161,7 @@ class AppDispatcher : Dispatcher() {
                         "releases_url": "https://api.github.com/repos/CyC2018/CS-Notes/releases{/id}",
                         "deployments_url": "https://api.github.com/repos/CyC2018/CS-Notes/deployments",
                         "created_at": "2020-08-17T01:38:14Z",
-                        "updated_at": "${pull.request.user.updatedDate}",
+                        "updated_at": "${pull.request.user.userInfo}",
                         "pushed_at": "2020-08-13T08:27:38Z",
                         "git_url": "git://github.com/CyC2018/CS-Notes.git",
                         "ssh_url": "git@github.com:CyC2018/CS-Notes.git",
@@ -216,7 +216,7 @@ class AppDispatcher : Dispatcher() {
         const val forks_count = "35414"
         const val stargazers_count = "108485"
         val owner = RepositoryListResponse.Owner(
-            id = 36260787, login = "CyC2018",
+            login = "CyC2018",
             avatarUrl = "https://avatars3.githubusercontent.com/u/36260787?v=4",
             htmlUrl = "https://github.com/CyC2018"
         )
@@ -228,7 +228,7 @@ class AppDispatcher : Dispatcher() {
                 body = "修改一个错别字",
                 url = "https://github.com/CyC2018/CS-Notes/pulls/969",
             user= User(name = "i-Hu",
-                updatedDate = "2018-02-13T14:56:24Z",
+                userInfo = "2018-02-13T14:56:24Z",
                 photo = "https://avatars0.githubusercontent.com/u/26364818?v=4")))
     }
 

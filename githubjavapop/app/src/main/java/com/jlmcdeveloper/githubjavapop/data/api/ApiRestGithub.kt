@@ -1,5 +1,7 @@
 package com.jlmcdeveloper.githubjavapop.data.api
 
+import com.jlmcdeveloper.githubjavapop.data.api.model.PullRequestResponse
+import com.jlmcdeveloper.githubjavapop.data.api.model.RepositoryListResponse
 import retrofit2.Call
 import retrofit2.http.*
 import retrofit2.http.Query

@@ -1,14 +1,16 @@
 package com.jlmcdeveloper.githubjavapop.data.model
 
-import com.jlmcdeveloper.githubjavapop.data.api.RepositoryListResponse.RepositoryResponse
+import com.jlmcdeveloper.githubjavapop.data.api.model.RepositoryListResponse.RepositoryResponse
 
 
 data class GitCollection(
-    val title: String,
-    val description: String,
-    val fork: Int,
-    val star: Int,
-    val user: User){
+    var title: String,
+    var description: String,
+    var fork: Int,
+    var star: Int,
+    var user: User){
+
+    constructor() : this("","",0,0, User())
 
     constructor(repository : RepositoryResponse) : this(
         title = repository.name,

@@ -1,4 +1,4 @@
-package com.jlmcdeveloper.githubjavapop.data.api
+package com.jlmcdeveloper.githubjavapop.data.api.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -8,7 +8,8 @@ data class PullRequestResponse(
     @SerializedName("html_url")
     val url: String,
     val base: Base,
-    val user: User){
+    val user: User
+){
 
     fun getUpdateDate() = base.repo.updatedDate
 

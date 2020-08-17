@@ -1,26 +1,26 @@
 package com.jlmcdeveloper.githubjavapop.data.model
 
 import android.widget.ImageView
-import com.jlmcdeveloper.githubjavapop.data.api.PullRequestResponse
-import com.jlmcdeveloper.githubjavapop.data.api.RepositoryListResponse
+import com.jlmcdeveloper.githubjavapop.data.api.model.PullRequestResponse
+import com.jlmcdeveloper.githubjavapop.data.api.model.RepositoryListResponse
 import com.squareup.picasso.Picasso
 
-data class User(val name: String,
-                val updatedDate: String,
-                val photo: String){
+data class User(var name: String,
+                var userInfo: String,
+                var photo: String){
 
-
+    constructor(): this("","","")
 
     constructor(owner : RepositoryListResponse.Owner, fullName: String) : this(
         name = owner.login,
-        updatedDate = fullName,
+        userInfo = fullName,
         photo = owner.avatarUrl
     )
 
 
     constructor(user : PullRequestResponse.User, updatedDate: String) : this(
         name = user.login,
-        updatedDate = updatedDate,
+        userInfo = updatedDate,
         photo = user.avatarUrl
     )
 

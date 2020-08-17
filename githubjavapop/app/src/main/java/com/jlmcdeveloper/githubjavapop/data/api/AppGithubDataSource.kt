@@ -1,5 +1,7 @@
 package com.jlmcdeveloper.githubjavapop.data.api
 
+import com.jlmcdeveloper.githubjavapop.data.api.model.PullRequestResponse
+import com.jlmcdeveloper.githubjavapop.data.api.model.RepositoryListResponse
 import com.jlmcdeveloper.githubjavapop.data.model.GitCollection
 import com.jlmcdeveloper.githubjavapop.data.model.PullRequest
 import retrofit2.Call
@@ -15,8 +17,8 @@ class AppGithubDataSource(private val apiRest: ApiRestGithub) : GithubDataSource
             ApiEndPoint.perPage, page)
 
         call.enqueue(object : Callback<RepositoryListResponse> {
-            override fun onResponse( call: Call<RepositoryListResponse>,
-                response: Response<RepositoryListResponse>) {
+            override fun onResponse(call: Call<RepositoryListResponse>,
+                                    response: Response<RepositoryListResponse>) {
 
                 if (response.isSuccessful) {
                     val collection = mutableListOf<GitCollection>()
