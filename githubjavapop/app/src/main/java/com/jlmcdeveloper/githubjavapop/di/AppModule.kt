@@ -48,10 +48,10 @@ val api = listOf(cacheModule, okHttpClientModule, retrofitModule, apiModule)
 val repositoryModule = module {
     single(named("userRepository")) { GitCollection() }
 
-    factory{ RepositoryMain(get(), get(named("userRepository"))) }
-    factory{ RepositoryPullRequest(get(), get(named("userRepository"))) }
+    factory{ RepositoryMain(get() as AppGithubDataSource, get(named("userRepository"))) }
+    factory{ RepositoryPullRequest(get() as AppGithubDataSource, get(named("userRepository"))) }
 }
 
 
 
-val appModules = repositoryModule + api
+val appModules = api + repositoryModule

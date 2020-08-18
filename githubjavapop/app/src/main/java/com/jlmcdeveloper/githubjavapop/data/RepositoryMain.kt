@@ -7,13 +7,22 @@ import com.jlmcdeveloper.githubjavapop.data.model.GitCollection
 class RepositoryMain(private val githubDataSource: GithubDataSource, private val collection: GitCollection) {
 
     val gitCollection = mutableListOf<GitCollection>()
+    var running = false
 
-    fun moreCollection(success : (List<GitCollection>) -> Unit, failure: (String) -> Unit) {
-        githubDataSource.listRepository(getPage(), ApiEndPoint.language,success = {
-            gitCollection.addAll(it)
-            success(gitCollection)
+    fun moreCollection(success : (MutableList<GitCollection>) -> Unit, failure: (String) -> Unit) {
+        if(!running) {
+            running = true
 
-        }, failure = { failure(it) })
+            githubDataSource.listRepository(getPage(), ApiEndPoint.language, success = {
+                gitCollection.addAll(it)
+                success(gitCollection)
+                running= false
+
+            }, failure = {
+                failure(it)
+                running = false
+            })
+        }
     }
 
     fun setCollection(gitCollection: GitCollection){

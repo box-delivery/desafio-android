@@ -9,13 +9,26 @@ import com.jlmcdeveloper.githubjavapop.data.model.PullRequest
 class RepositoryPullRequest(private val githubDataSource: GithubDataSource, private val collection: GitCollection) {
 
     val pullRequests = mutableListOf<PullRequest>()
+    var running = false
 
     fun moreCollection(success : (MutableList<PullRequest>) -> Unit, failure: (String) -> Unit) {
-        githubDataSource.listPullRequest(getPage(), collection.user.name, collection.title, success = {
-            pullRequests.addAll(it)
-            success(pullRequests)
+        if(!running) {
+            running = true
+            githubDataSource.listPullRequest(
+                getPage(),
+                collection.user.name,
+                collection.title,
 
-        }, failure = { failure(it) })
+                success = {
+                    pullRequests.addAll(it)
+                    success(pullRequests)
+                    running= false
+                },
+                failure = {
+                    failure(it)
+                    running= false
+                })
+        }
     }
 
 

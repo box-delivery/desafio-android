@@ -5,7 +5,7 @@ import com.jlmcdeveloper.githubjavapop.data.api.model.RepositoryListResponse.Rep
 
 data class GitCollection(
     var title: String,
-    var description: String,
+    var description: String?,
     var fork: Int,
     var star: Int,
     var user: User

@@ -3,10 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <variable
+            name="repository"
+            type="com.jlmcdeveloper.githubjavapop.data.model.GitCollection" />
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_repository"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
@@ -34,7 +37,7 @@
                     android:id="@+id/textNameRepository"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/app_name"
+                    android:text="@{repository.title}"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -49,7 +52,7 @@
                     android:maxLines="3"
                     android:minLines="2"
                     android:textColor="@color/colorTextBlack"
-                    android:text="descripition epository"
+                    android:text="@{repository.description}"
                     android:padding="4dp"/>
 
                 <LinearLayout
@@ -70,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:paddingEnd="16dp"
                         android:paddingRight="16dp"
-                        android:text="640"
+                        android:text="@{Integer.toString(repository.fork)}"
                         android:textColor="@color/colorTextDartYellow"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -86,7 +89,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="98"
+                        android:text="@{Integer.toString(repository.star)}"
                         android:textColor="@color/colorTextDartYellow"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -96,7 +99,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="12dp"
@@ -105,30 +108,31 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/imageUser"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/actor_photo"
-                    android:minWidth="100dp"
-                    android:minHeight="80dp"
-                    android:src="@drawable/ic_person" />
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@string/actor_photo" />
 
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="username"
+                    android:maxLines="1"
+                    android:text="@{repository.user.name}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:maxLines="2"
                     android:textColor="@color/colorTextGrey"
-                    android:text="nome somebrenome"
+                    android:text="@{repository.user.userInfo}"
                     android:textSize="14sp" />
 
             </LinearLayout>
