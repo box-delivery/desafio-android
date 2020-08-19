@@ -96,7 +96,7 @@ class AppGithubDataSourceTest : KoinTest {
     @Test
     fun listPullRequestTest_success(){
 
-        githubDataSource.listPullRequest(1,
+        githubDataSource.listPullRequest(
             userName = AppDispatcher.pull.user,
             repositoryName = AppDispatcher.pull.repository,
             success = {
@@ -104,6 +104,7 @@ class AppGithubDataSourceTest : KoinTest {
             val pullRequest = it[0]
             assertEquals(pullRequest.title, AppDispatcher.pull.request.title)
             assertEquals(pullRequest.body, AppDispatcher.pull.request.body)
+            assertEquals(pullRequest.state, AppDispatcher.pull.request.state)
             assertEquals(pullRequest.url, AppDispatcher.pull.request.url)
             assertEquals(pullRequest.user.name, AppDispatcher.pull.request.user.name)
             assertEquals(pullRequest.user.photo, AppDispatcher.pull.request.user.photo)
@@ -119,8 +120,8 @@ class AppGithubDataSourceTest : KoinTest {
 
     @Test
     fun listPullRequestTest_failure(){
-        githubDataSource.listPullRequest(2,
-            userName = AppDispatcher.pull.user,
+        githubDataSource.listPullRequest(
+            userName = AppDispatcher.pullUser,
             repositoryName = AppDispatcher.pull.repository,
             success = {
                 fail()

@@ -66,8 +66,7 @@ class AppDispatcher : Dispatcher() {
 
 
             //============================= PullRequest =====================================
-            "/repos/${pull.user}/${pull.repository}/pulls?per_page=${ApiEndPoint.perPage}" +
-            "&page=${1}" -> MockResponse().setResponseCode(200).setBody(
+            "/repos/${pull.user}/${pull.repository}/pulls" -> MockResponse().setResponseCode(200).setBody(
                 """[
                   {
                     "id": 467231811,
@@ -196,8 +195,7 @@ class AppDispatcher : Dispatcher() {
 
 
             //-------- falha erro corpo vazio  --------
-            "/repos/${pull.user}/${pull.repository}/pulls?per_page=${ApiEndPoint.perPage}" +
-                    "&page=${2}" -> MockResponse().setResponseCode(204)
+            "/repos/$pullUser/${pull.repository}/pulls" -> MockResponse().setResponseCode(204)
 
 
 
@@ -227,9 +225,11 @@ class AppDispatcher : Dispatcher() {
             PullRequest(title = "Update 数据库系统原理.md",
                 body = "修改一个错别字",
                 url = "https://github.com/CyC2018/CS-Notes/pulls/969",
+                state = "open",
             user= User(name = "i-Hu",
                 userInfo = "2018-02-13T14:56:24Z",
                 photo = "https://avatars0.githubusercontent.com/u/26364818?v=4")))
+        const val pullUser = "User"
     }
 
     data class Pull(val user: String, val repository: String, val request: PullRequest)
