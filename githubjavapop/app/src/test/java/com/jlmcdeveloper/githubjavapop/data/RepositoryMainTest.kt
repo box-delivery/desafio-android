@@ -81,14 +81,14 @@ class RepositoryMainTest {
         // ---- buscar pagina um ------
         repositoryMain.moreCollection({
             assert(repositoryMain.gitCollection.size == ApiEndPoint.perPage*2)
-            assert(it[14].title == "title14")
+            assert(it[ApiEndPoint.perPage+1].title == "title${ApiEndPoint.perPage+1}")
             passed = true
         },{
             TestCase.fail()
         })
 
         val gC = mutableListOf<GitCollection>()
-        for( i in 10 until ApiEndPoint.perPage*2)
+        for( i in ApiEndPoint.perPage until ApiEndPoint.perPage*2)
             gC.add(GitCollection("title$i","body$i", i, i, User()))
 
         success(gC)
