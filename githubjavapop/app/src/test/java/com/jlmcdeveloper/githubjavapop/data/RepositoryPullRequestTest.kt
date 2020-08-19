@@ -39,12 +39,12 @@ class RepositoryPullRequestTest {
 
 
     @Test
-    fun moreCollection_successPageOne() {
+    fun listPullRequest_success() {
         assert(pullRequest.pullRequests.isEmpty())
 
         var success: (MutableList<PullRequest>) -> Unit = {}
-        every{ githubDataSource.listPullRequest(1, "user", "repo", any(),any()) } answers {
-            success = args[3] as (MutableList<PullRequest>) -> Unit
+        every{ githubDataSource.listPullRequest("user", "repo", any(),any()) } answers {
+            success = thirdArg()
         }
 
 
@@ -60,37 +60,7 @@ class RepositoryPullRequestTest {
 
         val pR = mutableListOf<PullRequest>()
         for( i in 0 until ApiEndPoint.perPage)
-            pR.add(PullRequest("title$i","body$i", "url$i", User()))
-
-        success(pR)
-        assert(passed)
-    }
-
-
-
-    @Test
-    fun moreCollection_successMultiplePage() {
-        moreCollection_successPageOne()
-
-
-        var success: (MutableList<PullRequest>) -> Unit = {}
-        every{ githubDataSource.listPullRequest(2, "user", "repo", any(),any()) } answers {
-            success = args[3] as (MutableList<PullRequest>) -> Unit
-        }
-
-
-        // ---- buscar pagina um ------
-        pullRequest.listPullRequest({
-            assert(pullRequest.pullRequests.size == ApiEndPoint.perPage*2)
-            assert(it[14].title == "title14")
-        },{
-            fail()
-            passed = true
-        })
-
-        val pR = mutableListOf<PullRequest>()
-        for( i in 10 until ApiEndPoint.perPage*2)
-            pR.add(PullRequest("title$i","body$i", "url$i", User()))
+            pR.add(PullRequest("title$i","body$i", "url$i","state$i", User()))
 
         success(pR)
         assert(passed)
