@@ -3,7 +3,7 @@ package com.jlmcdeveloper.githubjavapop.data.api
 object ApiEndPoint {
     const val url = "https://api.github.com"
     const val language = "Java"
-    const val perPage = 10
+    const val perPage = 5
     const val sort = "stars"
 
 

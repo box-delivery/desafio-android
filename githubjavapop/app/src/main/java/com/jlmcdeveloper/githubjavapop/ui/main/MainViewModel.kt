@@ -69,7 +69,4 @@ class MainViewModel(private val repository: RepositoryMain) : ViewModel(){
             loadingNewItems.postValue(false)
         }
     }
-
-
-
 }

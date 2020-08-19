@@ -6,20 +6,15 @@ import com.jlmcdeveloper.githubjavapop.data.model.GitCollection
 import com.jlmcdeveloper.githubjavapop.data.model.PullRequest
 
 
-class RepositoryPullRequest(private val githubDataSource: GithubDataSource, private val collection: GitCollection) {
+class RepositoryPullRequest(private val githubDataSource: GithubDataSource, val collection: GitCollection) {
 
     val pullRequests = mutableListOf<PullRequest>()
     var running = false
 
-    fun moreCollection(success : (MutableList<PullRequest>) -> Unit, failure: (String) -> Unit) {
+    fun listPullRequest(success : (MutableList<PullRequest>) -> Unit, failure: (String) -> Unit) {
         if(!running) {
             running = true
-            githubDataSource.listPullRequest(
-                getPage(),
-                collection.user.name,
-                collection.title,
-
-                success = {
+            githubDataSource.listPullRequest(collection.user.name, collection.title, success = {
                     pullRequests.addAll(it)
                     success(pullRequests)
                     running= false
@@ -31,8 +26,15 @@ class RepositoryPullRequest(private val githubDataSource: GithubDataSource, priv
         }
     }
 
+    fun getQtPROpen(): Int{
+        var qt = 0
+        pullRequests.forEach { if(it.state == "open") qt++}
+        return qt
+    }
 
-    private fun getPage(): Int{
-        return (pullRequests.size / ApiEndPoint.perPage) + 1
+    fun getQtPRClose(): Int{
+        var qt = 0
+        pullRequests.forEach { if(it.state == "closed") qt++}
+        return qt
     }
 }

@@ -18,8 +18,6 @@ interface ApiRestGithub {
 
     @GET("/repos/{user}/{repository}/pulls")
     fun listPullRequest(@Path("user") user: String,
-                        @Path("repository") repository: String,
-                        @Query("per_page") perPage: Int,
-                        @Query("page") page: Int):
+                        @Path("repository") repository: String):
             Call<List<PullRequestResponse>>
 }

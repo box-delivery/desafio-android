@@ -13,7 +13,6 @@ import junit.framework.TestCase.fail
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito
 
 
 class RepositoryPullRequestTest {
@@ -50,7 +49,7 @@ class RepositoryPullRequestTest {
 
 
         // ---- buscar pagina um ------
-        pullRequest.moreCollection({
+        pullRequest.listPullRequest({
             assert(pullRequest.pullRequests.size == ApiEndPoint.perPage)
             assert(it[0].title == "title0")
             passed = true
@@ -81,7 +80,7 @@ class RepositoryPullRequestTest {
 
 
         // ---- buscar pagina um ------
-        pullRequest.moreCollection({
+        pullRequest.listPullRequest({
             assert(pullRequest.pullRequests.size == ApiEndPoint.perPage*2)
             assert(it[14].title == "title14")
         },{

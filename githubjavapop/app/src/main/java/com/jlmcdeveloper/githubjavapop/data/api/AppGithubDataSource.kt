@@ -41,11 +41,10 @@ class AppGithubDataSource(private val apiRest: ApiRestGithub) : GithubDataSource
 
 
 
-    override fun listPullRequest(page: Int, userName: String, repositoryName: String,
+    override fun listPullRequest(userName: String, repositoryName: String,
                                  success: (List<PullRequest>) -> Unit, failure: (String) -> Unit) {
 
-        val call= apiRest.listPullRequest(userName, repositoryName,
-            ApiEndPoint.perPage, page)
+        val call= apiRest.listPullRequest(userName, repositoryName)
 
         call.enqueue(object: Callback<List<PullRequestResponse>> {
 

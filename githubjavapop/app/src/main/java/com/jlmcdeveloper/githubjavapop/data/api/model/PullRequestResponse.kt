@@ -7,6 +7,7 @@ data class PullRequestResponse(
     val body: String,
     @SerializedName("html_url")
     val url: String,
+    val state: String,
     val base: Base,
     val user: User
 ){

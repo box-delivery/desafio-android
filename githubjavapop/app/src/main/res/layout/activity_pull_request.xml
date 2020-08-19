@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.jlmcdeveloper.githubjavapop.ui.pullrequest.PullRequestViewModel" />
@@ -76,7 +77,10 @@
 
             <androidx.core.widget.ContentLoadingProgressBar
                 android:id="@+id/pb_loading"
+                android:visibility="@{viewModel.loadingList? View.VISIBLE : View.GONE}"
                 style="?android:attr/progressBarStyleLarge"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

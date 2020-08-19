@@ -6,6 +6,7 @@ data class PullRequest(
     val title: String,
     val body: String,
     val url: String,
+    val state: String,
     val user: User
 ) {
 
@@ -13,6 +14,7 @@ data class PullRequest(
         title = repository.title,
         body = repository.body,
         url = repository.url,
+        state = repository.state,
         user = User(repository.user, repository.getUpdateDate())
     )
 }
