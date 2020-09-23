@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Desafio Android</string>
+
+
+    <!--        SPLASH SCREEN-->
+    <string name="splash_screen_text_title">Desafio\nAndroid</string>
+
+
+    <!--    ERRORS TEXT-->
+    <string name="errors_generic">Ops, algo deu errado.</string>
+    <string name="errors_no_connection">Sem conexão</string>
+    <string name="errors_server_error">Erro no servidor</string>
+    <string name="errors_request_error">Erro na request</string>
+
+    <!--    BUTTONS TEXT-->
+    <string name="buttons_default_ok">OK</string>
+
 </resources>
