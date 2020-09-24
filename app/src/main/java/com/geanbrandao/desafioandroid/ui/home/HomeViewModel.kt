@@ -2,8 +2,8 @@ package com.geanbrandao.desafioandroid.ui.home
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.geanbrandao.desafioandroid.data.Item
-import com.geanbrandao.desafioandroid.data.RepositoriesResponse
+import com.geanbrandao.desafioandroid.data.repositories.Item
+import com.geanbrandao.desafioandroid.data.repositories.RepositoriesResponse
 import com.geanbrandao.desafioandroid.repositories.ReposRepository
 import com.geanbrandao.desafioandroid.repositories.ReposRepositoryImpl
 import io.reactivex.Observable

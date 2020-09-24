@@ -1,4 +1,4 @@
-package com.geanbrandao.desafioandroid.data
+package com.geanbrandao.desafioandroid.data.repositories
 
 import java.io.Serializable
 

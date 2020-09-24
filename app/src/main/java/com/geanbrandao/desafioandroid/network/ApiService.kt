@@ -1,7 +1,8 @@
 package com.geanbrandao.desafioandroid.network
 
-import com.geanbrandao.desafioandroid.data.Owner
-import com.geanbrandao.desafioandroid.data.RepositoriesResponse
+import com.geanbrandao.desafioandroid.data.pull_request.PullRequestResponse
+import com.geanbrandao.desafioandroid.data.repositories.Owner
+import com.geanbrandao.desafioandroid.data.repositories.RepositoriesResponse
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -25,4 +26,13 @@ interface ApiService {
      */
     @GET("/users/{username}")
     fun getUserDetails(@Path("username") username: String): Single<Owner>
+
+//   https://api.github.com/search/issues?q=repo%3Arealm%2Frealm-java%20is%3Apr%20is%3Aclosed&per_page=3&page=1
+
+    @GET("/search/issues")
+    fun getPullRequest(
+        @Query("q") query: String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ): Observable<PullRequestResponse>
 }

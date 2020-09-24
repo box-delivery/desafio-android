@@ -8,14 +8,14 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.geanbrandao.desafioandroid.R
-import com.geanbrandao.desafioandroid.data.Item
+import com.geanbrandao.desafioandroid.data.repositories.Item
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.item_repos.view.*
 
 class ReposAdapter(
-        private val context: Context,
-        private val onClick: ((item: Item) -> Unit),
-        private val data: ArrayList<Item> = arrayListOf()
+    private val context: Context,
+    private val onClick: ((item: Item) -> Unit),
+    private val data: ArrayList<Item> = arrayListOf()
 ) : RecyclerView.Adapter<ReposAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

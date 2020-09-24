@@ -2,11 +2,9 @@ package com.geanbrandao.desafioandroid.ui.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.geanbrandao.desafioandroid.R
-import com.geanbrandao.desafioandroid.data.RepositoriesResponse
+import com.geanbrandao.desafioandroid.data.repositories.RepositoriesResponse
 import com.geanbrandao.desafioandroid.globalExceptionHandle
 import com.geanbrandao.desafioandroid.ui.adapter.ReposAdapter
 import com.geanbrandao.desafioandroid.ui.base.BaseActivity
