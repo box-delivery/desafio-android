@@ -21,10 +21,10 @@ Criar um aplicativo para consultar a [API do GitHub](https://developer.github.co
 
 ### **Ganha + pontos se conter** ###
 
-* Framework para comunicação com API
+* ~~Framework para comunicação com API~~
 * Testes no projeto (unitários e por tela)
 * Testes funcionais (que naveguem pelo aplicativo como casos de uso)
-* Cache de imagens e da API
+* ~~Cache de imagens e da API~~ usando retrofit
 * Suportar mudanças de orientação das telas sem perder estado
 
 ### **Sugestões** ###
