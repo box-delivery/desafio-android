@@ -1,5 +1,7 @@
 package com.geanbrandao.desafioandroid.data.pull_request
 
+import java.io.Serializable
+
 data class User(
     val avatar_url: String,
     val events_url: String,
@@ -19,4 +21,4 @@ data class User(
     val subscriptions_url: String,
     val type: String,
     val url: String
-)
+): Serializable

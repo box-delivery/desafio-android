@@ -14,5 +14,7 @@
 
     <!--    BUTTONS TEXT-->
     <string name="buttons_default_ok">OK</string>
+    <string name="repos_pull_text_opened">%d opened</string>
+    <string name="repos_pull_text_closed">%d closed</string>
 
 </resources>

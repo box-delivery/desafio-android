@@ -31,8 +31,15 @@ interface ApiService {
 
     @GET("/search/issues")
     fun getPullRequest(
-        @Query("q") query: String,
-        @Query("page") page: Int,
+        @Query("q", encoded = true) query: String,
+        @Query("page", encoded = true) page: Int,
         @Query("per_page") perPage: Int
     ): Observable<PullRequestResponse>
+
+//    @GET("/search/{q}")
+//    fun getPullRequest(
+//            @Path("q", encoded = true) q: String,
+//            @Query("page") page: Int,
+//            @Query("per_page") perPage: Int
+//    ): Observable<PullRequestResponse>
 }

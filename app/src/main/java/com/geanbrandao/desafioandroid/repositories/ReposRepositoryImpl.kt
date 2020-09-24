@@ -63,15 +63,15 @@ class ReposRepositoryImpl : ReposRepository {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun getPullRequests(context: Context, page: Int, perPage: Int): Observable<PullRequestResponse> {
-        val qOpen = "" // primeira eh open
-        val qTotal = ""
+    override fun getPullRequests(context: Context, fullName: String, page: Int, perPage: Int): Observable<PullRequestResponse> {
+        val qOpen = "repo:${fullName}+is:pr+is:open" // primeira eh open
+        val qTotal = "repo:${fullName}+is:pr"
         return Observable.zip(
             RetrofitInitializer(context).createService().getPullRequest(qOpen, page, perPage),
             RetrofitInitializer(context).createService().getPullRequest(qTotal, page, perPage),
             BiFunction<PullRequestResponse, PullRequestResponse, PullRequestResponse> { p1: PullRequestResponse, p2: PullRequestResponse ->
-                val closed = p1.total_count - p2.total_count // abertos menos o total
-                val p3 = p1
+                val closed = p2.total_count - p1.total_count // abertos menos o total
+                val p3 = p2
                 p3.closed = closed
                 p3.open = p1.total_count
                 return@BiFunction p3

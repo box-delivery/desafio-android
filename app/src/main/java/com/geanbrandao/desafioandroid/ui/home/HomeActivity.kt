@@ -1,13 +1,16 @@
 package com.geanbrandao.desafioandroid.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geanbrandao.desafioandroid.R
 import com.geanbrandao.desafioandroid.data.repositories.RepositoriesResponse
 import com.geanbrandao.desafioandroid.globalExceptionHandle
+import com.geanbrandao.desafioandroid.goToActivity
 import com.geanbrandao.desafioandroid.ui.adapter.ReposAdapter
 import com.geanbrandao.desafioandroid.ui.base.BaseActivity
+import com.geanbrandao.desafioandroid.ui.repos_pull.ReposPullActivity
 import com.geanbrandao.desafioandroid.utils.PaginationScrollListener
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -34,7 +37,6 @@ class HomeActivity : BaseActivity() {
     private var isLoading: Boolean = false
 
     private var page: Int = 0
-
     private var response: RepositoriesResponse? = null
 
     private lateinit var layoutManager: LinearLayoutManager
@@ -43,7 +45,7 @@ class HomeActivity : BaseActivity() {
         ReposAdapter(
                 this,
                 {
-
+                    repoClick(it.full_name)
                 }
         )
     }
@@ -112,6 +114,12 @@ class HomeActivity : BaseActivity() {
         })
     }
 
+    private fun repoClick(fullName: String) {
+        val intent = Intent(this, ReposPullActivity::class.java)
+        intent.putExtra(ReposPullActivity.FULLNAME_KEY, fullName)
+        startActivity(intent)
+    }
+
     private fun setupFields() {
         toolbar.text_title.text = "Repositorios"
         toolbar.image_back.visibility = View.GONE
@@ -143,6 +151,8 @@ class HomeActivity : BaseActivity() {
                                 response?.items?.addAll(it.items)
                             }
 
+                            isLastPage = (page * PER_PAGE) >= it.total_count
+
                             it.items.forEach { item ->
                                 adapter.add(item)
                             }
@@ -172,4 +182,12 @@ class HomeActivity : BaseActivity() {
         disposable?.dispose()
     }
 
+    private fun stepBefore() {
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        stepBefore()
+    }
 }

@@ -56,6 +56,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
+    def retrofitRxJavaVersion = '1.0.0'
+    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$retrofitRxJavaVersion"
+
     // rxjava
     def rxAndroidVersion = '2.1.1'
     def rxJavaVersion = '2.2.10'
@@ -63,9 +66,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
-
-    def retrofitRxJavaVersion = '1.0.0'
-    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$retrofitRxJavaVersion"
 
     def rxBidingVersion = '2.0.0'
     implementation "com.jakewharton.rxbinding2:rxbinding:$rxBidingVersion"

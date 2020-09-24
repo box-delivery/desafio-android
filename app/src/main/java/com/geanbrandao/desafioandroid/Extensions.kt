@@ -3,13 +3,20 @@ package com.geanbrandao.desafioandroid
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.NetworkInfo
+import android.net.Uri
 import android.os.Build
+import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.TouchDelegate
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import kotlinx.android.synthetic.main.custom_error_dialog.view.*
@@ -20,6 +27,8 @@ import java.net.UnknownHostException
 fun Activity.goToActivity(activityClass: Class<*>) {
     startActivity(Intent(this, activityClass))
 }
+
+
 
 
 fun Activity.globalExceptionHandle(error: Throwable): AlertDialog {
@@ -95,4 +104,30 @@ fun Context.isNetworkAvailable(): Boolean {
         }
     }
     return false
+}
+
+fun View.increaseHitArea(dp: Float) {
+    // increase the hit area
+    val increasedArea = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().displayMetrics).toInt()
+    val parent = parent as View
+    parent.post {
+        val rect = Rect()
+        getHitRect(rect)
+        rect.top -= increasedArea
+        rect.left -= increasedArea
+        rect.bottom += increasedArea
+        rect.right += increasedArea
+        parent.touchDelegate = TouchDelegate(rect, this)
+    }
+}
+
+
+
+fun Activity.openNewTabWindow(urls: String) {
+    val uris = Uri.parse(urls)
+    val intents = Intent(Intent.ACTION_VIEW, uris)
+    val b = Bundle()
+    b.putBoolean("new_window", true)
+    intents.putExtras(b)
+    startActivity(intents)
 }

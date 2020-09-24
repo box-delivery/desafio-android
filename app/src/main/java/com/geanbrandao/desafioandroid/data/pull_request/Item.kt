@@ -1,5 +1,7 @@
 package com.geanbrandao.desafioandroid.data.pull_request
 
+import java.io.Serializable
+
 data class Item(
     val active_lock_reason: Any,
     val assignee: Any,
@@ -27,4 +29,4 @@ data class Item(
     val updated_at: String,
     val url: String,
     val user: User
-)
+): Serializable

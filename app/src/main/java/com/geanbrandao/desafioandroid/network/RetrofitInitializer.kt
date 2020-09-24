@@ -21,7 +21,9 @@ class RetrofitInitializer(context: Context) {
         const val HEADER_PRAGMA = "Pragma"
     }
 
-    private var gson = GsonBuilder().setLenient().create()
+    private var gson = GsonBuilder().setLenient()
+            .disableHtmlEscaping()
+            .create()
 
     private val cacheSize = (5 * 1024 * 1024).toLong()
 

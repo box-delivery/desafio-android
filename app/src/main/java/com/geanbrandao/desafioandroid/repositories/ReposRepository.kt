@@ -9,5 +9,5 @@ import io.reactivex.Observable
 interface ReposRepository {
     fun getRepositoriesJava(context: Context, query: String, sort: String, page: Int, perPage: Int): Observable<Item>
     fun getRepositoriesJava2(context: Context, query: String, sort: String, page: Int, perPage: Int): Observable<RepositoriesResponse>
-    fun getPullRequests(context: Context, page: Int, perPage: Int): Observable<PullRequestResponse>
+    fun getPullRequests(context: Context, fullName: String, page: Int, perPage: Int): Observable<PullRequestResponse>
 }

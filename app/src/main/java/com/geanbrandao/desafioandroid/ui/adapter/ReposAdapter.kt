@@ -73,6 +73,8 @@ class ReposAdapter(
                     .error(R.drawable.ic_placeholder_user)
                     .placeholder(R.drawable.ic_placeholder_user)
                     .into(profile)
+
+
         }
     }
 }
