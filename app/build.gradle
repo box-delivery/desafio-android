@@ -23,18 +23,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-}
 
-ext {
-    koin_version = '2.0.1'
-    retrofitVersion = '2.3.0'
-    retrofitRxJavaVersion = '1.0.0'
-    rxAndroidVersion = '2.1.1'
-    rxJavaVersion = '2.2.10'
-    rxKotlinVersion = '2.4.0-beta.1'
-    rxBidingVersion = '2.0.0'
-    timberVersion = '4.7.1'
-    retrofitVersion = '2.3.0'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -48,28 +45,36 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // koin
+    def koin_version = '2.0.1'
     implementation "org.koin:koin-core:$koin_version"
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-android-viewmodel:$koin_version"
 
     // retrofit
+    def retrofitVersion = '2.3.0'
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     // rxjava
+    def rxAndroidVersion = '2.1.1'
+    def rxJavaVersion = '2.2.10'
+    def rxKotlinVersion = '2.4.0-beta.1'
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
 
+    def retrofitRxJavaVersion = '1.0.0'
     implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$retrofitRxJavaVersion"
 
+    def rxBidingVersion = '2.0.0'
     implementation "com.jakewharton.rxbinding2:rxbinding:$rxBidingVersion"
 
     // donwlaod de imagens
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
+    def timberVersion = '4.7.1'
     // Timber for logs
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
@@ -81,4 +86,9 @@ dependencies {
 
     // circleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // okhttp
+    def okHttpVersion = "4.0.1"
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 }

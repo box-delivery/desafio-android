@@ -5,8 +5,8 @@ import android.os.Bundle
 import com.geanbrandao.desafioandroid.R
 
 open class BaseActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_base)
     }
 }

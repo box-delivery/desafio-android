@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -14,11 +13,10 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.item_repos.view.*
 
 class ReposAdapter(
-    private val context: Context,
-    private val onClick: ((item: Item) -> Unit),
-    private val data: ArrayList<Item> = arrayListOf()
-): RecyclerView.Adapter<ReposAdapter.MyViewHolder>() {
-
+        private val context: Context,
+        private val onClick: ((item: Item) -> Unit),
+        private val data: ArrayList<Item> = arrayListOf()
+) : RecyclerView.Adapter<ReposAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_repos, parent, false)
@@ -38,8 +36,19 @@ class ReposAdapter(
 
     override fun getItemCount() = data.count()
 
+    fun add(item: Item) {
+        val oldSize = data.size
+        data.add(item)
+        val newSize = data.size
+        notifyItemRangeChanged(oldSize, newSize)
+    }
 
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    fun clear() {
+        data.clear()
+        notifyDataSetChanged()
+    }
+
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val reposTitle = itemView.text_repos_title as AppCompatTextView
         val reposDescription = itemView.text_repos_description as AppCompatTextView
@@ -57,13 +66,13 @@ class ReposAdapter(
             stars.text = item.stargazers_count.toString()
 
             username.text = item.owner.login
-            name.text
+//            name.text
 
             Glide.with(itemView.context)
-                .load(item.owner.avatar_url)
-                .error(R.drawable.ic_placeholder_user)
-                .placeholder(R.drawable.ic_placeholder_user)
-                .into(profile)
+                    .load(item.owner.avatar_url)
+                    .error(R.drawable.ic_placeholder_user)
+                    .placeholder(R.drawable.ic_placeholder_user)
+                    .into(profile)
         }
     }
 }
