@@ -1,4 +1,4 @@
-package com.example.boxdelivery.views.repositories
+package com.example.boxdelivery.views.git_repositories
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -13,13 +13,13 @@ import com.example.boxdelivery.dummy.DummyContent.DummyItem
  * [RecyclerView.Adapter] that can display a [DummyItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class MyRepositoryItemRecyclerViewAdapter(
+class GitRepositoryItemRecyclerViewAdapter(
     private val values: List<DummyItem>
-) : RecyclerView.Adapter<MyRepositoryItemRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<GitRepositoryItemRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_repository, parent, false)
+            .inflate(R.layout.item_git_repository, parent, false)
         return ViewHolder(view)
     }
 

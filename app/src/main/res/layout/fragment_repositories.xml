@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
         tools:context=".views.pullrequests.PullRequestsFragment"
-        tools:listitem="@layout/item_repository"
+        tools:listitem="@layout/item_git_repository"
         />
 
 </LinearLayout>

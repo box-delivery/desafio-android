@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/navigation_repos"
-        android:name="com.example.boxdelivery.views.repositories.RepositoriesFragment"
+        android:name="com.example.boxdelivery.views.git_repositories.RepositoriesFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_repositories" >
         <action

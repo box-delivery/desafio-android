@@ -1,4 +1,4 @@
-package com.example.boxdelivery.views.repositories
+package com.example.boxdelivery.views.git_repositories
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -39,7 +39,7 @@ class RepositoriesFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyRepositoryItemRecyclerViewAdapter(DummyContent.ITEMS)
+                adapter = GitRepositoryItemRecyclerViewAdapter(DummyContent.ITEMS)
             }
         }
         return view
