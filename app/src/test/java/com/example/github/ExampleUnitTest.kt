@@ -1,4 +1,4 @@
-package com.example.boxdelivery
+package com.example.github
 
 import org.junit.Test
 

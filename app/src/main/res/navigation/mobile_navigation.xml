@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/navigation_repos"
-        android:name="com.example.boxdelivery.views.git_repositories.RepositoriesFragment"
+        android:name="com.example.github.views.git_repositories.RepositoriesFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_repositories" >
         <action
@@ -22,8 +22,14 @@
 
     <fragment
         android:id="@+id/navigation_pull_requests"
-        android:name="com.example.boxdelivery.views.pullrequests.PullRequestsFragment"
+        android:name="com.example.github.views.pullrequests.PullRequestsFragment"
         tools:layout="@layout/fragment_repositories">
+        <argument
+            app:argType="string"
+            android:name="ownerLogin"/>
+        <argument
+            app:argType="string"
+            android:name="repoName"/>
 
     </fragment>
 
