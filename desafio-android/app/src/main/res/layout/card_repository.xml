@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_marginBottom="@dimen/cardview_compat_inset_shadow">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/linearRepo"
+            android:layout_width="241dp"
+            android:layout_height="107dp"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/nameRepo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/azul_repo"
+                android:text=""
+                android:textSize="20sp"></TextView>
+
+            <TextView
+                android:id="@+id/descRepo"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:textStyle="bold"
+                android:text=""
+                android:textSize="16sp"></TextView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/forks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="#00FFFFFF"
+                    android:contentDescription="@string/fork"
+                    android:src="@drawable/ic_baseline_alt_route_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/numForks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:textColor="#DF9305"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/forks"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#00FFFFFF"
+                    android:contentDescription="@string/star"
+                    android:src="@drawable/ic_baseline_star_20"
+                    app:layout_constraintStart_toEndOf="@+id/numForks"
+                    app:layout_constraintTop_toTopOf="parent"
+                    ></ImageButton>
+
+                <TextView
+                    android:id="@+id/numStars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:textColor="#DF9305"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton"
+                    app:layout_constraintTop_toTopOf="parent"></TextView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearUser"
+            android:layout_width="135dp"
+            android:layout_height="117dp"
+            android:layout_marginStart="4dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearRepo"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avatarUser"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/avatar_image"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_person_24" />
+
+                <TextView
+                    android:id="@+id/loginUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/azul_repo"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="2dp"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/avatarUser"></TextView>
+
+                <TextView
+                    android:id="@+id/nomeUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="7dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/loginUser"></TextView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
